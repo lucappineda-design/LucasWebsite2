@@ -5,11 +5,224 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luca S. Pommer Pineda - About Me</title> 
     <link rel="stylesheet" href="styles.css">
+
+    <style>
+        /* -----------------------------------------------------------
+           APPLE-STYLE PAGE FADE IN
+        ------------------------------------------------------------*/
+        body {
+            opacity: 0;
+            animation: fadeInPage 1.4s ease-out forwards;
+        }
+        @keyframes fadeInPage {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* -----------------------------------------------------------
+           CINEMATIC BACKGROUND PAN + GOLDEN COLOR OVERLAY
+        ------------------------------------------------------------*/
+        body::before {
+            animation: panBackground 40s linear infinite alternate;
+        }
+        @keyframes panBackground {
+            from { background-position: 0% 50%; }
+            to { background-position: 100% 50%; }
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background: radial-gradient(circle at top left, rgba(255,220,150,0.25), transparent 60%),
+                        radial-gradient(circle at bottom right, rgba(255,190,120,0.25), transparent 60%);
+            mix-blend-mode: soft-light;
+            opacity: 0.8;
+            z-index: -1;
+            animation: glowShift 16s ease-in-out infinite alternate;
+        }
+        @keyframes glowShift {
+            0%   { transform: translate3d(0,0,0); }
+            100% { transform: translate3d(-35px,15px,0); }
+        }
+
+        /* -----------------------------------------------------------
+           HEADER FLOAT + GOLD PARTICLES BEHIND PROFILE
+        ------------------------------------------------------------*/
+        header {
+            text-align: center;
+            animation: slideDown 0.9s ease-out;
+        }
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-18px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .profile-photo-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        .profile-photo {
+            border-radius: 50%;
+            animation: floatPhoto 4s ease-in-out infinite alternate;
+            position: relative;
+            z-index: 3;
+        }
+
+        /* Soft gold particles */
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.65;
+            filter: blur(3px);
+            z-index: 1;
+            mix-blend-mode: screen;
+        }
+
+        .p1 {
+            width: 42px; height: 42px;
+            background: #ffd77b;
+            top: -10px; left: -20px;
+            animation: particle1 7s ease-in-out infinite alternate;
+        }
+        .p2 {
+            width: 30px; height: 30px;
+            background: #ffe1a4;
+            bottom: -10px; right: -20px;
+            animation: particle2 6s ease-in-out infinite alternate;
+        }
+        .p3 {
+            width: 34px; height: 34px;
+            background: #ffca67;
+            top: 60%; left: -14px;
+            animation: particle3 7.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes floatPhoto {
+            from { transform: translateY(0px); }
+            to { transform: translateY(-12px); }
+        }
+
+        @keyframes particle1 {
+            from { transform: translate(0,0); }
+            to   { transform: translate(10px,-10px); }
+        }
+        @keyframes particle2 {
+            from { transform: translate(0,0); }
+            to   { transform: translate(-12px,6px); }
+        }
+        @keyframes particle3 {
+            from { transform: translate(0,0); }
+            to   { transform: translate(6px,-8px); }
+        }
+
+        /* -----------------------------------------------------------
+           VISION PRO GOLD BREATHING GLOW
+        ------------------------------------------------------------*/
+        h1 {
+            animation: nameGlow 3.8s ease-in-out infinite alternate;
+        }
+        @keyframes nameGlow {
+            0% {
+                text-shadow: 0 0 3px rgba(255,210,130,0.25), 0 0 2px rgba(255,210,130,0.7);
+            }
+            100% {
+                text-shadow: 0 0 12px rgba(255,210,130,0.85), 0 0 22px rgba(255,190,90,1);
+            }
+        }
+
+        /* -----------------------------------------------------------
+           APPLE UNDERLINE HOVER
+        ------------------------------------------------------------*/
+        a {
+            text-decoration: none;
+            position: relative;
+        }
+        a::after {
+            content: "";
+            position: absolute;
+            left: 0; bottom: -3px;
+            width: 0%;
+            height: 2px;
+            background: gold;
+            transition: width 0.3s ease;
+        }
+        a:hover::after {
+            width: 100%;
+        }
+
+        /* -----------------------------------------------------------
+           SECTION REVEAL
+        ------------------------------------------------------------*/
+        section {
+            opacity: 0;
+            transform: translateY(16px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* -----------------------------------------------------------
+           FEATURED PROJECT CARDS – 3D TILT
+        ------------------------------------------------------------*/
+        #featured-projects li {
+            background: rgba(255,255,255,0.92);
+            border-radius: 12px;
+            padding: 12px 16px;
+            margin-bottom: 14px;
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+        #featured-projects li:hover {
+            transform: translateY(-6px) rotateX(6deg) rotateY(-5deg);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+        }
+
+        /* -----------------------------------------------------------
+           ✨ DISNEY GOLD SPARKLES (CURSOR TRAIL)
+        ------------------------------------------------------------*/
+        .sparkle {
+            position: fixed;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            pointer-events: none;
+            background: radial-gradient(circle, gold, rgba(255,255,255,0));
+            filter: drop-shadow(0 0 10px gold);
+            animation: sparkleTrail 1s ease-out forwards;
+            z-index: 9999;
+        }
+
+        @keyframes sparkleTrail {
+            0% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            60% {
+                opacity: 0.8;
+                transform: translate(-50%, -80%) scale(1.3);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -110%) scale(0.4);
+            }
+        }
+    </style>
+
 </head>
+
 <body>
-    
+
     <header>
-        <img src="profile.jpg" alt="Portrait of Luca S. Pommer Pineda" class="profile-photo">
+        <div class="profile-photo-wrapper">
+            <img src="profile.jpg" alt="Portrait of Luca S. Pommer Pineda" class="profile-photo">
+            <span class="particle p1"></span>
+            <span class="particle p2"></span>
+            <span class="particle p3"></span>
+        </div>
 
         <h1>Luca S. Pommer Pineda</h1>
 
@@ -30,10 +243,8 @@
                 with a minor in French. I am passionate about creative media, entrepreneurship, and building meaningful 
                 projects that connect people and brands. Through my work with LP Viral Productions, I have produced 
                 high performing video content for restaurants, influencers, and local businesses using professional camera 
-                equipment, drones, and advanced editing software. My work experience in both fast-paced restaurant 
-                environments and client facing roles has strengthened my communication, leadership, and organizational 
-                skills. I am multilingual in Spanish, French, and English, and I enjoy combining creativity, business 
-                knowledge, and technical skills to bring ideas to life and support the growth of the organizations I work with.
+                equipment, drones, and advanced editing software. My work experience in fast-paced environments has strengthened 
+                my communication, leadership, and problem-solving skills. I enjoy combining creativity and business strategy to bring ideas to life.
             </p>
         </section>
 
@@ -53,57 +264,42 @@
 
             <h3>Technical Skills</h3>
             <ul>
-                <li>Video Production: Filming &amp; editing with Lumix full frame cameras, GoPros, Insta360, and DJI drones</li>
-                <li>Professional Editing Software: Adobe Premiere Pro, CapCut, Adobe Lightroom, Adobe Illustrator, Canva</li>
-                <li>Web &amp; Programming: HTML, CSS (intro), Python (intro)</li>
-                <li>Business Tools: Excel, Google Sheets, Outlook, and Tableau</li>
-                <li>Social Media Strategy: Trend research, audience insights, content optimization</li>
-                <li>Multilingual: Fluent in Spanish and French; native level English</li>
+                <li>Video Production: Lumix cameras, GoPro, Insta360, DJI drones</li>
+                <li>Editing Software: Premiere Pro, Lightroom, Illustrator, Canva</li>
+                <li>Programming: HTML, CSS (intro), Python (intro)</li>
+                <li>Business Tools: Excel, Google Sheets, Tableau</li>
+                <li>Social Media Strategy & Content Optimization</li>
             </ul>
 
             <h3>Soft Skills</h3>
             <ul>
-                <li>Strong communication and customer service skills</li>
-                <li>Time management and efficiency in fast paced environments</li>
-                <li>Creative problem solving and adaptability</li>
-                <li>Attention to detail in visual design, presentation, and branding</li>
-                <li>Teamwork and cross department coordination</li>
-                <li>Entrepreneurial mindset: initiative and leadership</li>
+                <li>Communication & customer service</li>
+                <li>Creativity & problem solving</li>
+                <li>Leadership & team collaboration</li>
+                <li>Adaptability in fast-paced environments</li>
+                <li>Attention to detail</li>
             </ul>
         </section>
 
         <section id="featured-projects">
-    <h2>Featured Projects (CS110)</h2>
-    <ol>
-        <li>
-            <strong><a href="project2.html" target="_blank">Project 2 – Your Project Title</a></strong>
-            <p>
-                Project 2 focuses on breaking down a larger program into small, reusable functions 
-                that each perform a specific task. The project demonstrates how parameters, loops, and
-                structured code design can be combined to build a clear and organized Python program.
-            </p>
-        </li>
+            <h2>Featured Projects (CS110)</h2>
+            <ol>
+                <li>
+                    <strong><a href="project2.html" target="_blank">Project 2 – Python Turtle Graphics Scene</a></strong>
+                    <p>A structured graphics program broken into reusable functions demonstrating loops, parameters, and design organization.</p>
+                </li>
 
-        <li>
-            <strong><a href="project3.html" target="_blank">Project 3 – Your Project Title</a></strong>
-            <p>
-                Project 3 focuses on improving the Turtle Graphics scene from Project 2 by reorganizing the code into
-                cleaner and more efficient functions. The goal is to break large tasks into smaller pieces, remove repeated
-                code, and make the program easier to modify. This refactoring allows the scene to be expanded more easily
-                and supports creating a more detailed final design.
-            </p>
-        </li>
+                <li>
+                    <strong><a href="project3.html" target="_blank">Project 3 – Turtle Graphics Refactoring</a></strong>
+                    <p>A full redesign of Project 2 using helper functions, utility functions, and parameterized code for scalability and clarity.</p>
+                </li>
 
-        <li>
-            <strong><a href="project5.html" target="_blank">Project 5 – Your Project Title</a></strong>
-            <p>
-                A description of Project 5. Mention the problem you solved, any interesting code
-                you wrote, or how this assignment helped you understand new CS110 concepts.
-            </p>
-        </li>
-    </ol>
-</section>
-
+                <li>
+                    <strong><a href="project8.html" target="_blank">Project 8 – HTML/CSS Website</a></strong>
+                    <p>A complete personal portfolio created with structured HTML and CSS, applying responsive design and professional styling.</p>
+                </li>
+            </ol>
+        </section>
     </main>
 
     <footer>
@@ -113,6 +309,52 @@
             <a href="https://www.dreamstime.com/professional-background-image-business-presentations-no-people-image332343319" target="_blank">Website</a>
         </p>
     </footer>
+
+    <!-- -----------------------------------------------------------
+         JAVASCRIPT: GOLD SPARKLES, SCROLL REVEAL, PARALLAX
+    -------------------------------------------------------------->
+    <script>
+        /* -----------------------------------------------------------
+           ✨ DISNEY GOLD SPARKLES (CURSOR TRAIL)
+        ------------------------------------------------------------*/
+        document.addEventListener("pointermove", function (e) {
+            const sparkle = document.createElement("span");
+            sparkle.className = "sparkle";
+            sparkle.style.left = e.clientX + "px";
+            sparkle.style.top = e.clientY + "px";
+            document.body.appendChild(sparkle);
+
+            setTimeout(() => sparkle.remove(), 1000);
+        });
+
+        /* -----------------------------------------------------------
+           🍎 SCROLL REVEAL
+        ------------------------------------------------------------*/
+        const sections = document.querySelectorAll("main section");
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                }
+            });
+        }, { threshold: 0.15 });
+
+        sections.forEach(section => observer.observe(section));
+
+        /* -----------------------------------------------------------
+           🚀 PARALLAX EFFECT
+        ------------------------------------------------------------*/
+        window.addEventListener("scroll", () => {
+            const scrollY = window.scrollY;
+
+            sections.forEach(section => {
+                const speed = 0.06;
+                const offset = scrollY * speed * -0.08;
+                section.style.transform = `translateY(${offset}px)`;
+            });
+        });
+    </script>
 
 </body>
 </html>

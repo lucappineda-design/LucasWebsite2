@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 8 – About Me Website</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Dark code box styling (professor-style) + animations -->
+    <style>
+        pre {
+            background-color: #1e1e1e;
+            color: #f8f8f2;
+            padding: 16px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-size: 0.95rem;
+            line-height: 1.4;
+            border: 1px solid #333;
+            margin-bottom: 16px;
+        }
+        code {
+            font-family: Consolas, Monaco, "Courier New", monospace;
+        }
+
+        /* Animate the existing background image from styles.css */
+        body::before {
+            animation: bg-pan 45s linear infinite alternate;
+        }
+
+        @keyframes bg-pan {
+            0% {
+                background-position: 0% 50%;
+            }
+            100% {
+                background-position: 100% 50%;
+            }
+        }
+
+        /* Fade/slide animations for content */
+        header {
+            animation: slide-down 0.8s ease-out;
+        }
+
+        main > section {
+            opacity: 0;
+            animation: fade-up 0.9s ease-out forwards;
+        }
+
+        main > section:nth-of-type(1) {
+            animation-delay: 0.1s;
+        }
+
+        main > section:nth-of-type(2) {
+            animation-delay: 0.3s;
+        }
+
+        main > section:nth-of-type(3) {
+            animation-delay: 0.5s;
+        }
+
+        @keyframes slide-down {
+            from {
+                opacity: 0;
+                transform: translateY(-16px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fade-up {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Gentle glow on the main heading */
+        h1 {
+            animation: title-glow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes title-glow {
+            0% {
+                text-shadow: 0 0 2px rgba(74, 144, 226, 0.3);
+            }
+            100% {
+                text-shadow: 0 0 14px rgba(74, 144, 226, 0.9);
+            }
+        }
+
+        /* Finished website screenshot hover effect */
+        .finished-screenshot {
+            max-width: 100%;
+            display: block;
+            margin-bottom: 12px;
+            border-radius: 10px;
+            transition: transform 0.6s ease, box-shadow 0.6s ease;
+        }
+
+        .finished-screenshot:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Project 8 – About Me Website</h1>
+        <hr>
+    </header>
+
+    <main>
+        <section>
+            <h2>About the Project</h2>
+            <p>
+                Project 8 is about building a personal “About Me” website using semantic HTML and an external CSS file.
+                The goal is to create a clean, professional page that presents my personal information, education, skills, and featured projects in a well-structured layout.
+                I use HTML elements like <code>&lt;header&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;footer&gt;</code>, and lists to organize the content in a way that is easy to read and maintain.
+                The styling is handled in a separate <code>styles.css</code> file, which controls typography, spacing, colors, and a background image so the whole site looks cohesive.
+                Hyperlinks are used for my email, phone number, LinkedIn, and project pages, turning the site into a small, interactive portfolio.
+                Overall, this project demonstrates how basic web technologies can be combined to create a functional, shareable website that represents my work and experience.
+            </p>
+        </section>
+
+        <section>
+            <h2>Sample Code</h2>
+            <p>
+                The following sample is from the header section of my Project 8 page, where I display my name, profile photo, and contact information:
+            </p>
+
+            <pre><code>
+&lt;header&gt;
+    &lt;img src="profile.jpg" alt="Portrait of Luca S. Pommer Pineda" class="profile-photo"&gt;
+
+    &lt;h1&gt;Luca S. Pommer Pineda&lt;/h1&gt;
+
+    &lt;hr&gt;
+
+    &lt;p class="contact"&gt;
+        &lt;a href="mailto:lpo@uoregon.edu"&gt;lpo@uoregon.edu&lt;/a&gt; |
+        &lt;a href="tel:+19715002883"&gt;(971) 500-2883&lt;/a&gt; |
+        &lt;a href="https://www.linkedin.com/in/luca-pineda/" target="_blank"&gt;LinkedIn&lt;/a&gt;
+    &lt;/p&gt;
+&lt;/header&gt;
+            </code></pre>
+
+            <p>
+                In this sample, the <code>&lt;header&gt;</code> element groups together the main information that appears at the top of my site, including my profile image, name, and contact details.
+                The image tag displays my photo and uses an <code>alt</code> attribute so screen readers and users with images disabled still get a description.
+                Underneath, the contact paragraph uses anchor tags with <code>mailto:</code> and <code>tel:</code> links so visitors can email or call me directly with a single click.
+                The LinkedIn link opens in a new tab, which keeps my portfolio page open while someone views my professional profile, making the website more user-friendly and interactive.
+            </p>
+        </section>
+
+        <section>
+            <h2>Finished Website</h2>
+            <p>
+                Below is a screenshot of the finished front page of my About Me website:
+            </p>
+
+            <!-- Change this file name to match your actual screenshot -->
+            <img src="FNWEB.png"
+                 alt="Screenshot of the finished About Me website for Project 8"
+                 class="finished-screenshot">
+
+            <p>
+                The finished website shows a centered layout with my profile picture, name, and contact information at the top, followed by clearly labeled sections for Personal Information, Education, Skills, and Featured Projects.
+                Each section uses consistent typography and spacing, which makes the content easy to scan and gives the page a professional appearance.
+                A subtle background image sits behind the content, adding visual interest while the text blocks remain readable on light cards.
+                Together, these design choices turn the page into a simple but effective online portfolio that highlights who I am and the work I have done in CS110.
+            </p>
+        </section>
+
+        <p>
+            <a href="index.html">⬅ Back to About Me</a>
+        </p>
+    </main>
+
+</body>
+</html>

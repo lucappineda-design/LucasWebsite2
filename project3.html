@@ -6,7 +6,7 @@
     <title>Project 3 – Turtle Graphics Scene Refactoring</title>
     <link rel="stylesheet" href="styles.css">
 
-    <!-- Dark code box styling (professor-style) -->
+    <!-- Dark code box styling + animations -->
     <style>
         pre {
             background-color: #1e1e1e;
@@ -18,9 +18,139 @@
             line-height: 1.4;
             border: 1px solid #333;
             margin-bottom: 16px;
+
+            /* gentle floating animation for code block */
+            animation: code-float 4s ease-in-out infinite alternate;
         }
         code {
             font-family: Consolas, Monaco, "Courier New", monospace;
+        }
+
+        /* Animate the background image (from styles.css on body::before) */
+        body::before {
+            animation: bg-pan 45s linear infinite alternate;
+        }
+
+        @keyframes bg-pan {
+            0% {
+                background-position: 0% 50%;
+            }
+            100% {
+                background-position: 100% 50%;
+            }
+        }
+
+        /* Header slide + glow */
+        header {
+            animation: slide-down 0.8s ease-out;
+        }
+
+        h1 {
+            animation: title-glow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes slide-down {
+            from {
+                opacity: 0;
+                transform: translateY(-18px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes title-glow {
+            0% {
+                text-shadow: 0 0 2px rgba(74, 144, 226, 0.3);
+            }
+            100% {
+                text-shadow: 0 0 16px rgba(74, 144, 226, 0.9);
+            }
+        }
+
+        /* Sections fade up one after another */
+        main > section {
+            opacity: 0;
+            animation: fade-up 0.9s ease-out forwards;
+        }
+
+        main > section:nth-of-type(1) {
+            animation-delay: 0.1s;
+        }
+        main > section:nth-of-type(2) {
+            animation-delay: 0.35s;
+        }
+        main > section:nth-of-type(3) {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes fade-up {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Gentle floating for the code block */
+        @keyframes code-float {
+            from {
+                transform: translateY(0px);
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            }
+            to {
+                transform: translateY(-6px);
+                box-shadow: 0 8px 18px rgba(0, 0, 0, 0.45);
+            }
+        }
+
+        /* Image entrance + hover pop */
+        section img {
+            border-radius: 10px;
+            animation: img-pop 0.9s ease-out;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        section img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes img-pop {
+            from {
+                opacity: 0;
+                transform: scale(0.96) translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        /* Animated underline for the back link */
+        main > p a {
+            position: relative;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        main > p a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -3px;
+            width: 0%;
+            height: 2px;
+            background-color: #4a90e2;
+            transition: width 0.3s ease-out;
+        }
+
+        main > p a:hover::after {
+            width: 100%;
         }
     </style>
 </head>
@@ -89,7 +219,7 @@ def place(t, x, y, fn, *args, **kwargs):
         </section>
 
         <p>
-            <a href="project0.html">⬅ Back to About Me</a>
+            <a href="index.html">⬅ Back to About Me</a>
         </p>
     </main>
 

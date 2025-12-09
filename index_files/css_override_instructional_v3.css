@@ -1,0 +1,96 @@
+/*
+///// Custom Requests
+///// version 1.0
+*/
+
+/*
+/////// This will hide the add students and buttons
+*/
+a#wizard_add_students {
+  display: none;
+}
+
+a#wizard_add_tas {
+  display: none;
+}
+
+/* 
+///////// This removes the extra help dialog option.
+*/
+#help-dialog-options a[href="#create_ticket"] {
+  display:none !important;
+}
+
+/*
+///////// This will hide Collaborations
+*/
+a.collaborations {
+  display: none !important;
+}
+
+
+
+/* //////////////// MISC
+////////////////////  This code forward will alter specifically requested features.
+*/
+
+/* Hide "Report a Problem" */
+#help-dialog-options a[href="#create_ticket"] {
+  display:none !important;
+}
+
+/* Hide "Ask the Community" */
+#help-dialog-options a[href="http://help.instructure.com/forums/20225783-canvas-coach-q-a-site"] {
+  display:none !important;
+}
+
+/* Hide Course App Config */
+
+.ExternalAppsRoot .AppList .btn.pull-right {
+	display: none;
+}
+
+/* Add Threaded feature to Discussions */
+.replies {
+ padding-left: 7px;
+ border-left: solid #1b723c 16px;
+}
+
+.discussion-read-state-btn {
+  top: 32px;
+}
+
+div.entry-content {
+  padding-left:0px !important;
+}
+
+/*
+11/21/2025
+author: Eddie Matovu
+This style addresses inaccessible-as-default colors for <code> tag
+It would be used to manually style R code that is directly pasted into Canvas RCE
+*/
+code {
+    font-size: 1.1em !important;
+    color: #8c1414 !important;
+    background-color: #f9f9f9 !important;
+}
+/*
+11/22/2025
+author: Eddie Matovu
+This style modifies the vertical scroll bar on the left panel of the Canvas dashboard
+such that the words for menu item names do not break across lines in the Chrome browser
+*/
+header#header::-webkit-scrollbar {
+    width: 0.24rem;
+}
+header#header::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 1);
+    }
+header#header::-webkit-scrollbar-thumb {
+	background-color: #8B8B8B; /*lighter color*/
+    border-radius: 3px;
+    }
+header#header::-webkit-scrollbar-thumb:hover {
+	background-color: #636363; /*darker color*/
+    }

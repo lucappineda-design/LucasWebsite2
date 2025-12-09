@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 2 – Turtle Graphics Scene</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Dark code box styling (professor-style) -->
+    <style>
+        pre {
+            background-color: #1e1e1e;
+            color: #f8f8f2;
+            padding: 16px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-size: 0.95rem;
+            line-height: 1.4;
+            border: 1px solid #333;
+            margin-bottom: 16px;
+        }
+        code {
+            font-family: Consolas, Monaco, "Courier New", monospace;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Project 2 – Turtle Graphics Scene</h1>
+        <hr>
+    </header>
+
+    <main>
+        <section>
+            <h2>About the Project</h2>
+            <p>
+                This project is about creating a complete graphical scene using Python’s Turtle graphics module.
+                The code builds the scene out of smaller drawing functions that position and combine shapes into
+                a larger picture. Each function controls details like color, size, and placement so that different
+                parts of the scene can be reused or adjusted without rewriting everything. Overall, the program
+                demonstrates structured problem-solving by organizing the artwork into clear, readable pieces of code.
+            </p>
+        </section>
+
+        <section>
+            <h2>Sample Code</h2>
+            <p>
+                The following sample shows how one of the drawing functions uses parameters, loops, and helper
+                functions to create a composite shape in the scene:
+            </p>
+
+            <pre><code>
+def draw_flower(t, x, y, petal_color, center_color):
+    """Draw a flower at (x, y) with colored petals and a colored center."""
+    # Move to starting position without drawing
+    jump_to(t, x, y)
+    t.pencolor(petal_color)
+    t.fillcolor(petal_color)
+
+    # Draw petal ring
+    for _ in range(8):
+        draw_circle(t, 10)   # basic circle helper
+        t.left(45)           # rotate for the next petal
+
+    # Draw flower center
+    jump_to(t, x, y)
+    t.pencolor(center_color)
+    t.fillcolor(center_color)
+    draw_circle(t, 6)
+            </code></pre>
+
+            <p>
+                In this sample, the <code>draw_flower</code> function takes the turtle object and several parameters
+                that control where the flower is drawn and what colors it uses. The code first jumps to the starting
+                position without leaving a line, so the flower can be placed anywhere in the scene. It then uses a
+                <code>for</code> loop and a fixed rotation to draw a ring of circles, which together look like petals.
+                After the petals are drawn, the turtle returns to the center and draws a smaller circle in a different
+                color to represent the middle of the flower. This approach makes it easy to reuse the same function
+                to create many flowers with different positions and color combinations.
+            </p>
+        </section>
+
+        <section>
+            <h2>Final Scene</h2>
+            <p>
+                Below is the final turtle graphics scene produced by my program:
+            </p>
+
+            <img src="P2PTO.png"
+                 alt="Final turtle graphics scene created for Project 5"
+                 style="max-width: 100%; display: block; margin-bottom: 12px;">
+
+            <p>
+                The final picture shows a complete turtle graphics scene composed of multiple shapes arranged into
+                a cohesive design. Different elements are drawn using separate functions, which are layered to create
+                depth and variety in the image. Colors, positions, and sizes are carefully chosen so the whole scene
+                feels balanced and visually interesting. Together, they demonstrate how simple geometric drawing
+                commands can be combined to build a detailed and expressive graphic.
+            </p>
+        </section>
+
+        <p>
+            <a href="project0.html">⬅ Back to About Me</a>
+        </p>
+    </main>
+
+</body>
+</html>
